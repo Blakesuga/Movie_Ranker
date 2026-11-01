@@ -20,7 +20,8 @@ add_executable(MovieRanker ${SOURCES}
         src/weighted_score.h
         src/weighted_score.cpp
         src/benchmark.h
-        src/benchmark.cpp)
+        src/benchmark.cpp
+        src/sorting.cpp)
 
 if(MSVC)
     target_compile_options(MovieRanker PRIVATE /W4)
