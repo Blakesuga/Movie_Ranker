@@ -8,8 +8,14 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <cassert>
+#include "sorting.h"
 #include "csv.h"
 #include "loader.h"
+#include "mergesort.h"
+#include <chrono>
+#include <random>
 
 int main() {
     std::cout << "I love movies" << std::endl;
@@ -18,31 +24,29 @@ int main() {
     // load movie data from CSV file
     auto movies = loadMovies(std::string(DATA_DIR) + "/kaggle_movie_dataset.csv");
     
+    // sort by vote_average, weighted_score is still 0.0 until quick sort is completed
+    auto byAvgDesc = [](const Movie& a, const Movie& b) {
+        return a.vote_average > b.vote_average;
+    };
 
-    /* test CSV parser for movie data
-    std::istringstream test(
-        "id,title,genres\n"
-        "1,\"Plain\",\"Drama\"\n"
-        "2,\"Comma, Inside\",\"Action, Comedy\"\n"
-        "3,\"Say \"\"Hi\"\"\",\"\"\n"
-        "4,\"Line\nBreak\",Horror\n");
+    // sets up a comparator for sorting movies by weighted score in descending order via a timer
+    auto timeIt = [&](const char* label, std::vector<Movie> data) {
+        auto start = std::chrono::steady_clock::now();
+        mergeSortRec(data, byAvgDesc);
+        auto end = std::chrono::steady_clock::now();
+        std::cout << label << ": "
+                  << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
+                  << " ms\n";
+    };      
     
+    auto shuffled = movies;
+    std::shuffle(shuffled.begin(), shuffled.end(), std::mt19937(42));
 
-    std::vector<std::string> row;
-    while (readRecord(test, row)) {
-        std::cout << row.size() << " fields | title = [" << row[1] << "]\n";
+    // counts time it takes to sort the original and shuffled data 3 times each
+    for (int run = 1; run <= 3; ++run) {
+        timeIt("Merge sort, original order", movies);
+        timeIt("Merge sort, shuffled      ", shuffled);
     }
-    
-
-    for (size_t i = 0; i < 5; ++i) {
-        const Movie& m = movies[i];
-        std::cout << m.id << " | " << m.title << " | " << m.release_year
-                << " | votes: " << m.vote_count << " | avg: " << m.vote_average
-                << " | genres:";
-        for (const auto& g : m.genres) std::cout << " [" << g << "]";
-        std::cout << "\n";
-    }
-    */
 
     return 0;
 }
