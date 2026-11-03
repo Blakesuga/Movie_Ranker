@@ -15,12 +15,12 @@ endif()
 file(GLOB SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_executable(MovieRanker ${SOURCES}
         src/main.cpp
-        src/sorting.h
         src/quicksort.cpp
-        src/weighted_score.h
         src/weighted_score.cpp
-        src/benchmark.h
-        src/benchmark.cpp)
+        src/benchmark.cpp
+        src/loader.cpp)
+
+target_compile_definitions(MovieRanker PRIVATE DATA_DIR="${CMAKE_SOURCE_DIR}/data")
 
 if(MSVC)
     target_compile_options(MovieRanker PRIVATE /W4)
