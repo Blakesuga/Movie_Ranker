@@ -22,4 +22,4 @@ struct Movie {
 
 };
 
-#endif //MOVIE_RANKER_MOVIE_H
+#endif
