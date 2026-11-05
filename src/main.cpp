@@ -71,9 +71,9 @@ int main()
             timeIt("Merge sort, shuffled      ", shuffled);
         }
 
-        // ONLY UNCOMMENT IF BENCHMARK RESULTS ARE ACTUALLY NEEDED
-        // benchmarkResults(movies);
-
-        return 0;
     }
+    // ONLY UNCOMMENT IF BENCHMARK RESULTS ARE ACTUALLY NEEDED
+    // benchmarkResults(movies);
+
+    return 0;
 }
