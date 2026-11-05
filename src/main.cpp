@@ -13,6 +13,7 @@
 #include <random>
 #include "sorting.h"
 #include "loader.h"
+#include "benchmark.h"
 
 int main()
 {
@@ -69,6 +70,9 @@ int main()
             timeIt("Merge sort, original order", movies);
             timeIt("Merge sort, shuffled      ", shuffled);
         }
+
+        // ONLY UNCOMMENT IF BENCHMARK RESULTS ARE ACTUALLY NEEDED
+        // benchmarkResults(movies);
 
         return 0;
     }

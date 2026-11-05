@@ -5,5 +5,6 @@
 #include "sorting.h"
 
 double timedSort(std::vector<Movie>& movies, void (*sortFunc)(std::vector<Movie>& movies, sortingKey key, sortingOrder order), sortingKey key, sortingOrder order);
+void benchmarkResults(std::vector<Movie>& movies);
 
 #endif
