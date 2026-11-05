@@ -45,7 +45,7 @@ namespace detail {
 }   
 
 template <typename T, typename Cmp>
-void mergeSortRec(std::vector<T>& a, sortingKey key, sortingOrder order) {
+void mergeSort(std::vector<T>& a, Cmp cmp) {
     std::vector<T> tmp(a.size());
     detail::mergeSortRec(a, tmp, 0, a.size(), cmp);
 }
