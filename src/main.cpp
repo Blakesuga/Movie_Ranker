@@ -48,6 +48,13 @@ int main() {
         timeIt("Merge sort, shuffled      ", shuffled);
     }
 
+    inline void mergeSort(std::vector<Movie>& a, sortingKey key, sortingOrder order) {
+        mergeSort(a, [key, order](const Movie& x, const Movie& y) {
+            return getValue(x, key, order) < getValue(y, key, order);
+                
+        });
+    }
+
     return 0;
 }
 
