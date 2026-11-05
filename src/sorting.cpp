@@ -12,7 +12,7 @@ double getValue(const Movie& movie, sortingKey key, sortingOrder order) {
         if (order == sortingOrder::ascending) {
             return movie.release_year;
         } else {
-            return movie.release_year * -1;
+            return -static_cast<double> (movie.release_year);
         }
     }
 }

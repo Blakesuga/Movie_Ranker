@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <utility>
+#include "sorting.h"
 
 namespace detail {
     // merges sorted halves a[lo,mid) and a[mid, hi) -> a[lo, hi]
@@ -27,7 +28,7 @@ namespace detail {
     }
 
     template <typename T, typename Cmp>
-    void mergeSortRec(std::vector<T>& a, std::vector<T>& tmp, size_t lo, size_t hi, Cmp cmp) {
+    inline void mergeSortRec(std::vector<T>& a, std::vector<T>& tmp, size_t lo, size_t hi, Cmp cmp) {
         if (hi - lo < 2) 
             return; // base case: 0 or 1 element
 
@@ -44,7 +45,7 @@ namespace detail {
 }   
 
 template <typename T, typename Cmp>
-void mergeSortRec(std::vector<T>& a, Cmp cmp) {
+void mergeSort(std::vector<T>& a, Cmp cmp) {
     std::vector<T> tmp(a.size());
     detail::mergeSortRec(a, tmp, 0, a.size(), cmp);
 }

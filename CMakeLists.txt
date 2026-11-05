@@ -16,6 +16,7 @@ file(GLOB SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_executable(MovieRanker ${SOURCES}
         src/main.cpp
         src/quicksort.cpp
+        src/mergesort.cpp
         src/weighted_score.cpp
         src/benchmark.h
         src/benchmark.cpp
