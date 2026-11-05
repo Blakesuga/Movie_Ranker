@@ -6,6 +6,7 @@
 
 #include "csv.h"
 #include "loader.h"
+#include "weighted_score.h"
 
 // only helpers are visible in this file, not outside of it
 namespace {
@@ -152,6 +153,9 @@ std::vector<Movie> loadMovies(const std::string& path) {
                         splitGenres(row[GEN]));                  
 
     }
+
+    // This populates the weighted scored directly after all movies are loaded.
+    populatingScore(movies);
 
     std::cerr << "Loaded " << movies.size() << " movies, skipped " << skipped
               << " malformed rows, filtered " << filtered << " adult movies\n";

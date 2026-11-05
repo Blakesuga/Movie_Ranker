@@ -17,6 +17,9 @@ add_executable(MovieRanker ${SOURCES}
         src/main.cpp
         src/quicksort.cpp
         src/weighted_score.cpp
+        src/benchmark.h
+        src/benchmark.cpp
+        src/sorting.cpp
         src/benchmark.cpp
         src/loader.cpp)
 
