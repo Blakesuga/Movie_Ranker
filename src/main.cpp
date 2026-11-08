@@ -1,3 +1,33 @@
+#ifndef DATA_DIR
+#define DATA_DIR "data"
+#endif
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include "loader.h"
+#include "interface.h"
+
+int main()
+{
+    std::cout << "Loading movies...\n";
+
+    std::vector<Movie> movies;
+    try
+    {
+        movies = loadMovies(std::string(DATA_DIR) + "/kaggle_movie_dataset.csv");
+    }
+    catch (const std::exception& error)
+    {
+        std::cerr << "Couldn't load the movies: " << error.what() << "\n";
+        return 1;
+    }
+
+    runInterface(movies);
+    return 0;
+}
+
+/*
 // Probably where interface will go
 
 #ifndef DATA_DIR
@@ -77,3 +107,4 @@ int main()
 
     return 0;
 }
+*/
