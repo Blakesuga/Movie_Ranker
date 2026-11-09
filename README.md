@@ -2,7 +2,7 @@
 ## Team Members
 - Natania Philippe (Blakesuga)
 - Tamer Sabry (tamer-sabry)
-- Brett Raimann (raimannb-stack and alsodeonhart530 in commits, not sure why GitHub changed his username at times)
+- Brett Raimann (raimannb-stack and also deonhart530 in commits, not sure why GitHub changed his username at times)
 
 ## Notes
 - Do not edit the raw dataset. All filtering and manipulation of data must be done through code to avoid corruption of data and unwanted behavior
