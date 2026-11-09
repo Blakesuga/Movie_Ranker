@@ -31,5 +31,5 @@ cmake --build build --config Release
 ```powershell
 cmake -S . -B build
 cmake --build build --config Release
-.\build\Release\MovieRanker.exe 
+./build/MovieRanker 
 ```
